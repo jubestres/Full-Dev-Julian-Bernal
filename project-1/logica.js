@@ -1,8 +1,8 @@
-// Verificar si los datos de usuarios ya existen en localStorage
+
 let usuarios = JSON.parse(localStorage.getItem('usuarios'));
 
 if (!usuarios) {
-  // Si no existen, inicializa el array de usuarios y guárdalo en localStorage
+  
   usuarios = [
     { id: 1, usuario: 'usuario1', clave: '1234', intentosFallidos: 0, bloqueado: false },
     { id: 2, usuario: 'usuario2', clave: '5678', intentosFallidos: 0, bloqueado: false },
@@ -22,7 +22,7 @@ function iniciarSesion(event) {
   const username = usernameInput.value;
   const password = passwordInput.value;
 
-  // Obtiene los usuarios del localStorage cada vez que se intenta iniciar sesión
+  
   usuarios = JSON.parse(localStorage.getItem('usuarios'));
 
   const usuario = usuarios.find(u => u.usuario === username);
@@ -39,8 +39,8 @@ function iniciarSesion(event) {
 
   if (usuario.clave === password) {
     alert("Inicio de sesión exitoso");
-    usuario.intentosFallidos = 0; // Restablece el contador de intentos fallidos
-    localStorage.setItem('usuarios', JSON.stringify(usuarios)); // Guarda el estado actualizado
+    usuario.intentosFallidos = 0; 
+    localStorage.setItem('usuarios', JSON.stringify(usuarios)); 
     window.location.href = 'login.html';
   } else {
     usuario.intentosFallidos++;
@@ -51,11 +51,11 @@ function iniciarSesion(event) {
       alert("Su usuario ha sido bloqueado por exceder el número de intentos");
     }
 
-    // Guarda el estado actualizado en localStorage
+  
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
   }
 
-  // Restablece los campos de entrada
+  
   usernameInput.value = '';
   passwordInput.value = '';
 }
